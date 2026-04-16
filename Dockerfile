@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN apt-get update && apt-get install -y maven
+RUN ./mvnw clean package
 
-RUN mvn clean package -DskipTests
-
-CMD ["java", "-jar", "target/*.jar"]
+CMD ["java", "-jar", "target/Chat-0.0.1-SNAPSHOT.jar"]
