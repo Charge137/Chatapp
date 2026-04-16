@@ -4,6 +4,9 @@ WORKDIR /app
 
 COPY . .
 
+# 👇 ここ追加（フォルダ移動）
+WORKDIR /app/Chat app
+
 RUN apt-get update && apt-get install -y dos2unix
 RUN dos2unix mvnw
 RUN chmod +x mvnw
