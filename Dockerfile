@@ -4,15 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-# 👇 ここ追加（フォルダ移動）
-WORKDIR /app/Chat app
-
-RUN apt-get update && apt-get install -y dos2unix
-RUN dos2unix mvnw
-RUN chmod +x mvnw
-
-RUN ./mvnw clean package -DskipTests
-
-EXPOSE 8080
+RUN apt-get update && apt-get install -y maven
+RUN mvn clean package -DskipTests
 
 CMD ["java", "-jar", "target/*.jar"]
